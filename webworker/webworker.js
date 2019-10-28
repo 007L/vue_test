@@ -7,7 +7,7 @@ function timedcount () {
 
         if (i % 100000 === 0) {
 
-            postmessage(i);
+            postMessage(i);
 
         }
 

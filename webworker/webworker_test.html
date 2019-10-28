@@ -7,13 +7,36 @@
 <button onclick="startworker()">start worker</button>
 <button onclick="stopworker()">stop worker</button>
 <input type="text" value=""/>
-<script>varw;
+<script>
+    var w;
 
-//开始functionstartworker(){if(typeof(worker) !=="undefined") {你if(typeof(w) ==="undefined") {      w = new worker("demo_workers.js");}    w.onmessage =function(event){      document.getelementbyid("result").innerhtml =event.data;    };  }else{    document.getelementbyid("result").innerhtml ="sorry, your browser does not support web workers...";  }}
+//开始
+    console.log(Worker)
+    function startworker (){
+        if(typeof(Worker) !=="undefined") {
+            //你
+            console.log("typeof(worker) !==undefined")
+            if(typeof(w) ==="undefined") {
+                w = new Worker("webworker.js");
+                console.log("typeof(w) ===undefined")
+            };
+            w.onmessage =function(event){
+                document.getElementById("result").innerHTML =event.data;
+            };
+        }else{
+            console.log("else")
+            document.getElementById("result").innerHTML ="sorry, your browser does not support web workers...";
+        };
+    };
 
-//停止functionstopworker(){
 
-//强制终止执行中的web worker。worker对象提供了terminate()来终止自身执行任务，被终止的worker对象不能被重启或重用，我们只能新建另一个worker实例来执行新的任务。w.terminate();}</script>
+//停止
+    function stopworker(){
+    //强制终止执行中的web worker。worker对象提供了terminate()来终止自身执行任务，被终止的worker对象不能被重启或重用，
+    // 我们只能新建另一个worker实例来执行新的任务。
+        w.terminate();
+    }
+</script>
 </body>
 </html>
 
